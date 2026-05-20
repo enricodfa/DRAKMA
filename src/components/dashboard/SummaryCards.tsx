@@ -9,28 +9,28 @@ const cards = [
     label: 'Receitas',
     value: financialSummary.receitas,
     color: '#C9A86A',
-    iconBg: '#FFF8EE',
+    iconBg: 'rgba(201,168,106,0.15)',
     icon: TrendingUp,
   },
   {
     label: 'Gastos',
     value: financialSummary.gastos,
     color: '#E05C5C',
-    iconBg: '#FFF0F0',
+    iconBg: 'rgba(224,92,92,0.15)',
     icon: TrendingDown,
   },
   {
     label: 'Saldo disponível',
     value: financialSummary.saldo,
-    color: '#1B1B1F',
-    iconBg: '#F0F4FF',
+    color: '#F0F0F5',
+    iconBg: 'rgba(91,141,239,0.15)',
     icon: Wallet,
   },
   {
     label: 'Previsão para o mês',
     value: financialSummary.previsao,
     color: '#5B8DEF',
-    iconBg: '#F0FFF8',
+    iconBg: 'rgba(75,155,122,0.15)',
     icon: CalendarCheck,
   },
 ]
@@ -43,19 +43,16 @@ export default function SummaryCards() {
           key={label}
           className="rounded-xl p-4 flex flex-col gap-3 cursor-default transition-shadow"
           style={{
-            backgroundColor: '#FFFFFF',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+            backgroundColor: '#16161E',
+            border: '1px solid #2A2A38',
           }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLElement).style.boxShadow =
-              '0 4px 12px rgba(0,0,0,0.10)')
+            ((e.currentTarget as HTMLElement).style.borderColor = '#C9A86A30')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLElement).style.boxShadow =
-              '0 1px 3px rgba(0,0,0,0.06)')
+            ((e.currentTarget as HTMLElement).style.borderColor = '#2A2A38')
           }
         >
-          {/* Icon */}
           <div
             className="w-8 h-8 rounded-lg flex items-center justify-center"
             style={{ backgroundColor: iconBg }}
@@ -63,7 +60,6 @@ export default function SummaryCards() {
             <Icon size={16} style={{ color }} strokeWidth={2} />
           </div>
 
-          {/* Value */}
           <div>
             <p
               className="font-bold tabular-nums"
@@ -71,10 +67,7 @@ export default function SummaryCards() {
             >
               {formatCurrency(value)}
             </p>
-            <p
-              className="text-[11px] font-medium mt-0.5"
-              style={{ color: '#9090A0' }}
-            >
+            <p className="text-[11px] font-medium mt-0.5" style={{ color: '#6B6B80' }}>
               {label}
             </p>
           </div>

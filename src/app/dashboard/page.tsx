@@ -4,12 +4,9 @@ import BentoGrid from '@/components/dashboard/BentoGrid'
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden" style={{ backgroundColor: '#0F0F15' }}>
       <TopHeader />
-      <main
-        className="flex-1 overflow-auto flex flex-col gap-4"
-        style={{ padding: '20px 24px' }}
-      >
+      <main className="flex-1 overflow-auto flex flex-col gap-4" style={{ padding: '20px 24px' }}>
         <SummaryCards />
         <BentoGrid />
       </main>
