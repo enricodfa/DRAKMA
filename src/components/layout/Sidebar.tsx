@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Crown } from 'lucide-react'
 import SidebarNav from './SidebarNav'
 
@@ -17,12 +18,13 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
         style={{ borderColor: '#2A2A31', justifyContent: expanded ? 'space-between' : 'center' }}
       >
         <div className="flex items-center gap-2">
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
-            style={{ backgroundColor: '#C9A86A' }}
-          >
-            🦉
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Drakma"
+            width={40}
+            height={40}
+            className="rounded-xl flex-shrink-0"
+          />
           {expanded && (
             <span className="text-sm font-bold tracking-wide" style={{ color: '#C9A86A', letterSpacing: '0.05em' }}>
               DRAKMA
