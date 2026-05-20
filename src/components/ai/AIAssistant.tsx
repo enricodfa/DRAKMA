@@ -46,7 +46,7 @@ export default function AIAssistant() {
   const [input, setInput] = useState('')
   const [animatingId, setAnimatingId] = useState<string | null>(null)
   const prevLengthRef = useRef(messages.length)
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   // Animate new AI messages after user sends one
   useEffect(() => {
@@ -56,9 +56,10 @@ export default function AIAssistant() {
     prevLengthRef.current = messages.length
   }, [messages])
 
-  // Scroll to bottom on new messages / typing
+  // Scroll chat container (not the page) to bottom
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = messagesContainerRef.current
+    if (el) el.scrollTop = el.scrollHeight
   }, [messages, isTyping])
 
   const animatingContent =
@@ -103,6 +104,7 @@ export default function AIAssistant() {
 
       {/* Messages */}
       <div
+        ref={messagesContainerRef}
         className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3"
         style={{ minHeight: 0 }}
       >
@@ -156,7 +158,6 @@ export default function AIAssistant() {
           </div>
         )}
 
-        <div ref={bottomRef} />
       </div>
 
       {/* Input */}
