@@ -1,0 +1,203 @@
+<h2>Como organizar o conteúdo do Dashboard?</h2>
+<p class="subtitle">As 3 seções principais são: Gráfico de categorias, Gastos recentes e Insights IA + Assistente. Como distribuí-las?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="three-col" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE;padding:14px;border-radius:8px;min-height:260px;display:flex;flex-direction:column;gap:8px;">
+      <!-- Header strip -->
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="color:#1B1B1F;font-size:9px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="background:#C9A86A;color:#1B1B1F;font-size:7px;padding:3px 7px;border-radius:4px;font-weight:700;font-family:sans-serif;">+ Gasto</div>
+      </div>
+      <!-- 4 cards superiores -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:6px;font-family:sans-serif;">Receitas</div>
+          <div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$1.200</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:6px;font-family:sans-serif;">Gastos</div>
+          <div style="color:#E05C5C;font-size:8px;font-weight:700;font-family:sans-serif;">R$320</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:6px;font-family:sans-serif;">Saldo</div>
+          <div style="color:#1B1B1F;font-size:8px;font-weight:700;font-family:sans-serif;">R$880</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:6px;font-family:sans-serif;">Previsão</div>
+          <div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$120</div>
+        </div>
+      </div>
+      <!-- 3 colunas iguais -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;flex:1;">
+        <!-- Col 1: Gráfico -->
+        <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);display:flex;flex-direction:column;gap:5px;">
+          <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;">Gastos por categoria</div>
+          <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+            <div style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#C9A86A 0deg 155deg,#E05C5C 155deg 223deg,#4B9B7A 223deg 281deg,#8B7EC8 281deg 360deg);box-shadow:inset 0 0 0 16px #fff;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#C9A86A;border-radius:1px;display:inline-block;"></span><span style="font-size:6px;color:#555;font-family:sans-serif;">Delivery</span></span><span style="font-size:6px;color:#888;font-family:sans-serif;">43%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#E05C5C;border-radius:1px;display:inline-block;"></span><span style="font-size:6px;color:#555;font-family:sans-serif;">Transporte</span></span><span style="font-size:6px;color:#888;font-family:sans-serif;">19%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#4B9B7A;border-radius:1px;display:inline-block;"></span><span style="font-size:6px;color:#555;font-family:sans-serif;">Alimentação</span></span><span style="font-size:6px;color:#888;font-family:sans-serif;">16%</span></div>
+          </div>
+        </div>
+        <!-- Col 2: Recentes -->
+        <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);display:flex;flex-direction:column;gap:4px;">
+          <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;">Gastos recentes</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #F0F0EE;"><span style="font-size:6px;color:#333;font-family:sans-serif;">iFood</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$35</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #F0F0EE;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Uber</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$18,50</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #F0F0EE;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Café da Manhã</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$9,90</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #F0F0EE;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Mercado Extra</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$87,30</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Lanche</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$14</span></div>
+          </div>
+          <div style="color:#C9A86A;font-size:6px;font-family:sans-serif;text-align:center;border-top:1px solid #F0F0EE;padding-top:4px;">Ver todos →</div>
+        </div>
+        <!-- Col 3: Insights + IA -->
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+            <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;margin-bottom:4px;">✦ Insights</div>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="background:#FFF8EE;border-radius:4px;padding:4px;font-size:6px;color:#555;font-family:sans-serif;">Delivery = 43% dos gastos</div>
+              <div style="background:#FFF0F0;border-radius:4px;padding:4px;font-size:6px;color:#555;font-family:sans-serif;">Transporte +35% vs mês passado</div>
+              <div style="background:#F0FFF8;border-radius:4px;padding:4px;font-size:6px;color:#555;font-family:sans-serif;">Sobrará R$120 ao fim do mês</div>
+            </div>
+          </div>
+          <div style="background:#1B1B1F;border-radius:6px;padding:8px;flex:1;display:flex;flex-direction:column;gap:4px;">
+            <div style="color:#C9A86A;font-size:7px;font-weight:600;font-family:sans-serif;">✦ Assistente IA</div>
+            <div style="background:#2A2A31;border-radius:4px;padding:4px;font-size:6px;color:#F7F7F5;font-family:sans-serif;">Posso sair esse final de semana?</div>
+            <div style="font-size:6px;color:#9090A0;font-family:sans-serif;line-height:1.4;">Com R$880 disponíveis, você pode gastar até R$80 sem comprometer o orçamento.</div>
+            <div style="background:#2A2A31;border-radius:3px;padding:3px 6px;margin-top:auto;">
+              <div style="font-size:6px;color:#6B6B80;font-family:sans-serif;">Pergunte algo...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>3 Colunas Iguais</h3>
+      <p>Gráfico | Recentes | Insights+IA em grid simétrico. Idêntico à referência. Equilibrado, todas as informações visíveis de uma vez.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="two-col-wide" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE;padding:14px;border-radius:8px;min-height:260px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="color:#1B1B1F;font-size:9px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="background:#C9A86A;color:#1B1B1F;font-size:7px;padding:3px 7px;border-radius:4px;font-weight:700;font-family:sans-serif;">+ Gasto</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Receitas</div><div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$1.200</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Gastos</div><div style="color:#E05C5C;font-size:8px;font-weight:700;font-family:sans-serif;">R$320</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Saldo</div><div style="color:#1B1B1F;font-size:8px;font-weight:700;font-family:sans-serif;">R$880</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Previsão</div><div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$120</div></div>
+      </div>
+      <!-- 2 colunas: esquerda larga, direita estreita -->
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:6px;flex:1;">
+        <!-- Coluna esquerda: gráfico + recentes empilhados -->
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);display:flex;gap:8px;align-items:center;">
+            <div style="width:48px;height:48px;border-radius:50%;background:conic-gradient(#C9A86A 0deg 155deg,#E05C5C 155deg 223deg,#4B9B7A 223deg 281deg,#8B7EC8 281deg 360deg);box-shadow:inset 0 0 0 14px #fff;flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;margin-bottom:3px;">Gastos por categoria</div>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;">Delivery</span><span style="font-size:6px;color:#888;font-family:sans-serif;">R$140 · 43%</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;">Transporte</span><span style="font-size:6px;color:#888;font-family:sans-serif;">R$60 · 19%</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;">Alimentação</span><span style="font-size:6px;color:#888;font-family:sans-serif;">R$50 · 16%</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);flex:1;">
+            <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;margin-bottom:4px;">Gastos recentes</div>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #F5F5F5;"><span style="font-size:6px;color:#333;font-family:sans-serif;">iFood · 23 Mai</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$35</span></div>
+              <div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #F5F5F5;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Uber · 23 Mai</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$18,50</span></div>
+              <div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #F5F5F5;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Mercado Extra · 22 Mai</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$87,30</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Coluna direita: insights + IA em painel único contínuo -->
+        <div style="background:#1B1B1F;border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:6px;">
+          <div style="color:#C9A86A;font-size:7px;font-weight:700;font-family:sans-serif;">✦ Insights do Drakma</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="background:#2A2A31;border-radius:4px;padding:5px;font-size:6px;color:#D9D9E0;font-family:sans-serif;line-height:1.4;">Você gastou <strong style="color:#C9A86A;">R$140</strong> com delivery — 43% do total.</div>
+            <div style="background:#2A2A31;border-radius:4px;padding:5px;font-size:6px;color:#D9D9E0;font-family:sans-serif;line-height:1.4;">Transporte <strong style="color:#E05C5C;">+35%</strong> vs mês passado.</div>
+            <div style="background:#2A2A31;border-radius:4px;padding:5px;font-size:6px;color:#D9D9E0;font-family:sans-serif;line-height:1.4;">Se continuar assim, sobrará <strong style="color:#4B9B7A;">R$120</strong>.</div>
+          </div>
+          <div style="border-top:1px solid #2A2A31;padding-top:6px;margin-top:2px;">
+            <div style="color:#C9A86A;font-size:7px;font-weight:700;font-family:sans-serif;margin-bottom:4px;">✦ Assistente IA <span style="font-size:5px;background:#C9A86A20;color:#C9A86A;padding:1px 3px;border-radius:2px;font-weight:400;">BETA</span></div>
+            <div style="background:#2A2A31;border-radius:4px;padding:4px;font-size:6px;color:#F7F7F5;font-family:sans-serif;margin-bottom:3px;">Posso sair esse final de semana?</div>
+            <div style="font-size:6px;color:#9090A0;font-family:sans-serif;line-height:1.4;margin-bottom:5px;">Com R$880 disponíveis, pode gastar até R$80 sem comprometer.</div>
+            <div style="background:#2A2A31;border-radius:3px;padding:3px 5px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:6px;color:#6B6B80;font-family:sans-serif;">Pergunte algo...</span>
+              <span style="font-size:8px;color:#C9A86A;">›</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>2 Colunas (larga + painel IA)</h3>
+      <p>Esquerda larga com gráfico + recentes empilhados. Direita dark com Insights e IA unidos num painel contínuo. Mais hierarquia e foco no IA.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="bento" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE;padding:14px;border-radius:8px;min-height:260px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="color:#1B1B1F;font-size:9px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="background:#C9A86A;color:#1B1B1F;font-size:7px;padding:3px 7px;border-radius:4px;font-weight:700;font-family:sans-serif;">+ Gasto</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Receitas</div><div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$1.200</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Gastos</div><div style="color:#E05C5C;font-size:8px;font-weight:700;font-family:sans-serif;">R$320</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Saldo</div><div style="color:#1B1B1F;font-size:8px;font-weight:700;font-family:sans-serif;">R$880</div></div>
+        <div style="background:#fff;border-radius:5px;padding:6px;box-shadow:0 1px 3px rgba(0,0,0,0.07);"><div style="color:#999;font-size:6px;font-family:sans-serif;">Previsão</div><div style="color:#C9A86A;font-size:8px;font-weight:700;font-family:sans-serif;">R$120</div></div>
+      </div>
+      <!-- Bento grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:5px;flex:1;">
+        <!-- Gráfico: ocupa 1 col, 2 rows -->
+        <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.07);grid-row:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
+          <div style="color:#1B1B1F;font-size:7px;font-weight:600;font-family:sans-serif;align-self:flex-start;">Gastos por categoria</div>
+          <div style="width:58px;height:58px;border-radius:50%;background:conic-gradient(#C9A86A 0deg 155deg,#E05C5C 155deg 223deg,#4B9B7A 223deg 281deg,#8B7EC8 281deg 360deg);box-shadow:inset 0 0 0 18px #fff;"></div>
+          <div style="display:flex;flex-direction:column;gap:2px;width:100%;">
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#C9A86A;border-radius:1px;display:inline-block;"></span>Delivery</span><span style="font-size:6px;color:#888;font-family:sans-serif;">43%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#E05C5C;border-radius:1px;display:inline-block;"></span>Transporte</span><span style="font-size:6px;color:#888;font-family:sans-serif;">19%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#555;font-family:sans-serif;display:flex;align-items:center;gap:2px;"><span style="width:5px;height:5px;background:#4B9B7A;border-radius:1px;display:inline-block;"></span>Alimentação</span><span style="font-size:6px;color:#888;font-family:sans-serif;">16%</span></div>
+          </div>
+        </div>
+        <!-- Insight highlight: célula larga -->
+        <div style="background:#1B1B1F;border-radius:6px;padding:7px;box-shadow:0 1px 3px rgba(0,0,0,0.1);grid-column:span 2;">
+          <div style="color:#C9A86A;font-size:6px;font-weight:600;font-family:sans-serif;margin-bottom:3px;">✦ Insight do mês</div>
+          <div style="color:#F7F7F5;font-size:7px;font-family:sans-serif;line-height:1.4;">Delivery representa <strong style="color:#C9A86A;">43%</strong> dos seus gastos. Reduzir 2x/semana economizaria <strong style="color:#4B9B7A;">R$56/mês</strong>.</div>
+        </div>
+        <!-- Recentes: 1 col -->
+        <div style="background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 3px rgba(0,0,0,0.07);">
+          <div style="color:#1B1B1F;font-size:6px;font-weight:600;font-family:sans-serif;margin-bottom:3px;">Recentes</div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#333;font-family:sans-serif;">iFood</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$35</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Uber</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$18,50</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:6px;color:#333;font-family:sans-serif;">Mercado</span><span style="font-size:6px;color:#E05C5C;font-family:sans-serif;">-R$87,30</span></div>
+          </div>
+        </div>
+        <!-- IA: 1 col -->
+        <div style="background:#2A2A31;border-radius:6px;padding:7px;">
+          <div style="color:#C9A86A;font-size:6px;font-weight:600;font-family:sans-serif;margin-bottom:3px;">✦ IA</div>
+          <div style="font-size:6px;color:#D9D9E0;font-family:sans-serif;line-height:1.4;margin-bottom:4px;">Pode gastar até R$80 nesse fim de semana.</div>
+          <div style="background:#1B1B1F;border-radius:3px;padding:2px 5px;">
+            <span style="font-size:5px;color:#6B6B80;font-family:sans-serif;">Pergunte...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Bento Grid Assimétrico</h3>
+      <p>Cards de tamanhos variados tipo Notion/Linear. Gráfico mais largo, insight em destaque dark, recentes e IA menores. Visual mais moderno e editorial.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;text-align:center;">Clique para selecionar. Responda no terminal quando estiver pronto.</p>

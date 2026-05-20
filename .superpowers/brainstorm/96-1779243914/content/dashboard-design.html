@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drakma — Dashboard Design</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: #E8E8E6; display: flex; align-items: flex-start; justify-content: center; padding: 24px; min-height: 100vh; }
+
+  .frame { width: 1200px; height: 760px; display: flex; border-radius: 16px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.22); }
+
+  /* ── SIDEBAR ── */
+  .sidebar { width: 220px; background: #1B1B1F; display: flex; flex-direction: column; padding: 20px 12px; flex-shrink: 0; transition: width 0.25s ease; }
+  .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 0 8px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #2A2A31; }
+  .logo-mark { width: 30px; height: 30px; background: #C9A86A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; font-weight: 800; color: #1B1B1F; letter-spacing: -1px; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name { color: #F7F7F5; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; }
+  .logo-sub { color: #6B6B80; font-size: 10px; font-weight: 400; }
+
+  .nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+  .nav-item:hover { background: #242428; }
+  .nav-item.active { background: rgba(201,168,106,0.12); }
+  .nav-icon { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .nav-item.active .nav-icon { color: #C9A86A; }
+  .nav-label { font-size: 13px; color: #9090A0; font-weight: 500; }
+  .nav-item.active .nav-label { color: #C9A86A; font-weight: 600; }
+  .badge { font-size: 9px; background: #2A2A31; color: #6B6B80; padding: 2px 6px; border-radius: 20px; margin-left: auto; }
+
+  .sidebar-footer { margin-top: auto; }
+  .premium-card { background: linear-gradient(135deg, #2A2A31, #232328); border: 1px solid #C9A86A30; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .premium-title { color: #C9A86A; font-size: 11px; font-weight: 700; margin-bottom: 3px; }
+  .premium-sub { color: #6B6B80; font-size: 10px; line-height: 1.4; margin-bottom: 8px; }
+  .premium-btn { background: #C9A86A; color: #1B1B1F; font-size: 10px; font-weight: 700; padding: 6px 10px; border-radius: 6px; text-align: center; cursor: pointer; }
+
+  .user-card { display: flex; align-items: center; gap: 8px; padding: 10px; background: #242428; border-radius: 10px; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #C9A86A; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #1B1B1F; }
+  .user-info { flex: 1; min-width: 0; }
+  .user-name { color: #F7F7F5; font-size: 12px; font-weight: 600; }
+  .user-plan { color: #6B6B80; font-size: 10px; }
+  .chevron { color: #6B6B80; font-size: 12px; }
+
+  /* ── MAIN ── */
+  .main { flex: 1; background: #F4F4F2; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ── HEADER ── */
+  .header { padding: 20px 28px 16px; display: flex; align-items: center; justify-content: space-between; background: #F4F4F2; border-bottom: 1px solid #E5E5E3; flex-shrink: 0; }
+  .header-left h1 { font-size: 20px; font-weight: 700; color: #1B1B1F; }
+  .header-left p { font-size: 12px; color: #9090A0; margin-top: 1px; }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .month-selector { display: flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #E5E5E3; border-radius: 8px; padding: 7px 12px; font-size: 12px; color: #1B1B1F; font-weight: 500; cursor: pointer; }
+  .month-selector span { color: #9090A0; font-size: 10px; }
+  .notif-btn { width: 34px; height: 34px; background: #fff; border: 1px solid #E5E5E3; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; }
+  .add-btn { display: flex; align-items: center; gap: 6px; background: #1B1B1F; color: #F7F7F5; font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+  .add-btn:hover { background: #2A2A31; }
+
+  /* ── CONTENT ── */
+  .content { flex: 1; padding: 20px 28px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .summary-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card-label { font-size: 11px; color: #9090A0; font-weight: 500; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .card-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .card-value { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+  .card-sub { font-size: 10px; color: #9090A0; margin-top: 4px; }
+  .val-green { color: #C9A86A; }
+  .val-red { color: #E05C5C; }
+  .val-dark { color: #1B1B1F; }
+  .val-blue { color: #5B8DEF; }
+
+  /* ── BENTO GRID ── */
+  .bento { display: grid; grid-template-columns: 1fr 1.4fr 1fr; grid-template-rows: auto auto; gap: 12px; flex: 1; }
+
+  /* Chart card — spans 2 rows */
+  .chart-card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); grid-row: span 2; display: flex; flex-direction: column; }
+  .card-title { font-size: 13px; font-weight: 600; color: #1B1B1F; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+  .card-title-sub { font-size: 10px; color: #9090A0; font-weight: 400; }
+  .donut-wrap { display: flex; align-items: center; justify-content: center; margin: 8px 0 14px; }
+  .donut { width: 110px; height: 110px; border-radius: 50%; background: conic-gradient(#C9A86A 0deg 155deg, #E05C5C 155deg 223deg, #4B9B7A 223deg 281deg, #8B7EC8 281deg 360deg, #D0D0D8 360deg); box-shadow: inset 0 0 0 32px #fff; position: relative; }
+  .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+  .donut-total { font-size: 14px; font-weight: 700; color: #1B1B1F; }
+  .donut-label { font-size: 9px; color: #9090A0; }
+  .legend { display: flex; flex-direction: column; gap: 8px; }
+  .legend-item { display: flex; align-items: center; justify-content: space-between; }
+  .legend-left { display: flex; align-items: center; gap: 7px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+  .legend-name { font-size: 11px; color: #555; }
+  .legend-right { display: flex; align-items: center; gap: 8px; }
+  .legend-val { font-size: 11px; color: #1B1B1F; font-weight: 500; }
+  .legend-pct { font-size: 10px; color: #9090A0; }
+  .view-all { font-size: 11px; color: #C9A86A; text-align: center; margin-top: auto; padding-top: 12px; border-top: 1px solid #F0F0EE; cursor: pointer; }
+
+  /* Insight banner — spans 2 cols, row 1 */
+  .insight-banner { background: #1B1B1F; border-radius: 12px; padding: 18px; box-shadow: 0 1px 6px rgba(0,0,0,0.12); grid-column: span 2; display: flex; flex-direction: column; gap: 10px; }
+  .insight-header { display: flex; align-items: center; gap: 6px; }
+  .insight-star { color: #C9A86A; font-size: 13px; }
+  .insight-title { color: #C9A86A; font-size: 12px; font-weight: 700; letter-spacing: 0.2px; }
+  .insight-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .insight-item { background: #242428; border-radius: 8px; padding: 10px 12px; }
+  .insight-item-icon { font-size: 16px; margin-bottom: 4px; }
+  .insight-item-text { font-size: 11px; color: #D0D0D8; line-height: 1.4; }
+  .insight-item-text strong { color: #C9A86A; }
+  .insight-item-text .green { color: #4B9B7A; }
+  .insight-item-text .red { color: #E05C5C; }
+
+  /* Recent expenses — row 2, col 2 */
+  .recent-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+  .expense-list { display: flex; flex-direction: column; gap: 1px; flex: 1; margin-top: 10px; }
+  .expense-item { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #F5F5F3; }
+  .expense-item:last-child { border-bottom: none; }
+  .expense-icon { width: 28px; height: 28px; border-radius: 8px; background: #F0F0EE; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .expense-info { flex: 1; min-width: 0; }
+  .expense-name { font-size: 12px; color: #1B1B1F; font-weight: 500; }
+  .expense-date { font-size: 10px; color: #9090A0; }
+  .expense-amount { font-size: 12px; color: #E05C5C; font-weight: 600; }
+
+  /* AI panel — row 2, col 3 */
+  .ai-card { background: #2A2A31; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .ai-header { display: flex; align-items: center; gap: 6px; }
+  .ai-title { color: #C9A86A; font-size: 12px; font-weight: 700; }
+  .ai-badge { font-size: 9px; background: rgba(201,168,106,0.15); color: #C9A86A; padding: 2px 6px; border-radius: 10px; }
+  .chat-messages { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .msg-user { align-self: flex-end; background: #C9A86A; color: #1B1B1F; font-size: 11px; font-weight: 500; padding: 7px 10px; border-radius: 10px 10px 2px 10px; max-width: 80%; }
+  .msg-ai { display: flex; gap: 6px; align-items: flex-start; }
+  .ai-avatar { width: 22px; height: 22px; background: #1B1B1F; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .msg-ai-bubble { background: #363640; color: #D0D0D8; font-size: 11px; padding: 7px 10px; border-radius: 10px 10px 10px 2px; line-height: 1.45; }
+  .msg-ai-bubble strong { color: #C9A86A; }
+  .ai-input { display: flex; align-items: center; gap: 6px; background: #363640; border-radius: 8px; padding: 8px 10px; margin-top: auto; }
+  .ai-input-text { flex: 1; font-size: 11px; color: #6B6B80; }
+  .ai-send { width: 22px; height: 22px; background: #C9A86A; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #1B1B1F; font-size: 11px; cursor: pointer; flex-shrink: 0; }
+
+  .security-bar { display: flex; align-items: center; gap: 6px; padding: 8px 0 2px; }
+  .security-bar span { font-size: 10px; color: #9090A0; }
+  .security-dot { width: 14px; height: 14px; background: #1B1B1F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #C9A86A; font-size: 8px; flex-shrink: 0; }
+
+  .label-section { display: flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">D</div>
+      <div class="logo-text">
+        <span class="logo-name">Drakma</span>
+        <span class="logo-sub">Suas finanças, sob controle.</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-item active">
+        <div class="nav-icon">⊞</div>
+        <span class="nav-label">Dashboard</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">↓</div>
+        <span class="nav-label">Gastos</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">↑</div>
+        <span class="nav-label">Receitas</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">◈</div>
+        <span class="nav-label">Categorias</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">✦</div>
+        <span class="nav-label">Insights IA</span>
+      </div>
+      <div class="nav-item" style="opacity:0.5;">
+        <div class="nav-icon">◎</div>
+        <span class="nav-label">Metas</span>
+        <span class="badge">breve</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="premium-card">
+        <div class="premium-title">👑 Drakma Premium</div>
+        <div class="premium-sub">Recursos avançados para você ir ainda mais longe.</div>
+        <div class="premium-btn">Quero conhecer</div>
+      </div>
+      <div class="user-card">
+        <div class="avatar">L</div>
+        <div class="user-info">
+          <div class="user-name">Lucas</div>
+          <div class="user-plan">Plano Gratuito</div>
+        </div>
+        <span class="chevron">⌄</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Olá, Lucas 👋</h1>
+        <p>Veja como estão suas finanças hoje.</p>
+      </div>
+      <div class="header-right">
+        <div class="month-selector">
+          📅 Maio de 2024 <span>▾</span>
+        </div>
+        <div class="notif-btn">🔔</div>
+        <div class="add-btn">
+          <span style="font-size:15px;line-height:1;">+</span> Adicionar gasto <span style="opacity:0.5;font-size:10px;">▾</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- SUMMARY CARDS -->
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="card-label">
+            <div class="card-icon" style="background:#FFF8EE;">💰</div>
+            Receitas
+          </div>
+          <div class="card-value val-green">R$ 1.200,00</div>
+          <div class="card-sub">Total recebido no mês</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-label">
+            <div class="card-icon" style="background:#FFF0F0;">🛍</div>
+            Gastos
+          </div>
+          <div class="card-value val-red">R$ 320,00</div>
+          <div class="card-sub">Total gasto no mês</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-label">
+            <div class="card-icon" style="background:#F0F4FF;">💳</div>
+            Saldo disponível
+          </div>
+          <div class="card-value val-dark">R$ 880,00</div>
+          <div class="card-sub">Disponível para usar</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-label">
+            <div class="card-icon" style="background:#F0FFF8;">📈</div>
+            Previsão para o mês
+          </div>
+          <div class="card-value val-blue">R$ 120,00</div>
+          <div class="card-sub">Saldo previsto no fim do mês</div>
+        </div>
+      </div>
+
+      <!-- BENTO GRID -->
+      <div class="bento">
+
+        <!-- CHART — col 1, rows 1+2 -->
+        <div class="chart-card">
+          <div class="card-title">
+            Gastos por categoria
+            <span class="card-title-sub">Este mês ▾</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" style="position:relative;">
+              <div class="donut-center">
+                <div class="donut-total">R$320</div>
+                <div class="donut-label">Total gasto</div>
+              </div>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-left"><div class="legend-dot" style="background:#C9A86A;"></div><span class="legend-name">Delivery</span></div>
+              <div class="legend-right"><span class="legend-val">R$140</span><span class="legend-pct">43%</span></div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-left"><div class="legend-dot" style="background:#E05C5C;"></div><span class="legend-name">Transporte</span></div>
+              <div class="legend-right"><span class="legend-val">R$60</span><span class="legend-pct">19%</span></div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-left"><div class="legend-dot" style="background:#4B9B7A;"></div><span class="legend-name">Alimentação</span></div>
+              <div class="legend-right"><span class="legend-val">R$50</span><span class="legend-pct">16%</span></div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-left"><div class="legend-dot" style="background:#8B7EC8;"></div><span class="legend-name">Lazer</span></div>
+              <div class="legend-right"><span class="legend-val">R$40</span><span class="legend-pct">12%</span></div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-left"><div class="legend-dot" style="background:#D0D0D8;"></div><span class="legend-name">Outros</span></div>
+              <div class="legend-right"><span class="legend-val">R$30</span><span class="legend-pct">10%</span></div>
+            </div>
+          </div>
+          <div class="view-all">Ver relatório completo →</div>
+        </div>
+
+        <!-- INSIGHT BANNER — cols 2+3, row 1 -->
+        <div class="insight-banner">
+          <div class="insight-header">
+            <span class="insight-star">✦</span>
+            <span class="insight-title">Insights do Drakma</span>
+          </div>
+          <div class="insight-cards">
+            <div class="insight-item">
+              <div class="insight-item-icon">🛵</div>
+              <div class="insight-item-text">Você gastou <strong>R$ 140,00</strong> com delivery este mês. Isso representa <strong>43%</strong> dos seus gastos.</div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item-icon">🚗</div>
+              <div class="insight-item-text">Seus gastos com transporte aumentaram <span class="red"><strong>35%</strong></span> em relação ao mês passado.</div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item-icon">✅</div>
+              <div class="insight-item-text">Se continuar assim, você pode terminar o mês com <span class="green"><strong>R$ 120,00</strong></span> a mais do que planejou.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT EXPENSES — col 2, row 2 -->
+        <div class="recent-card">
+          <div class="card-title">
+            Gastos recentes
+            <span class="card-title-sub" style="color:#C9A86A;cursor:pointer;">Ver todos</span>
+          </div>
+          <div class="expense-list">
+            <div class="expense-item">
+              <div class="expense-icon">🍔</div>
+              <div class="expense-info"><div class="expense-name">iFood</div><div class="expense-date">23 de Maio</div></div>
+              <div class="expense-amount">R$ 35,00</div>
+            </div>
+            <div class="expense-item">
+              <div class="expense-icon">🚗</div>
+              <div class="expense-info"><div class="expense-name">Uber</div><div class="expense-date">23 de Maio</div></div>
+              <div class="expense-amount">R$ 18,50</div>
+            </div>
+            <div class="expense-item">
+              <div class="expense-icon">☕</div>
+              <div class="expense-info"><div class="expense-name">Café da Manhã</div><div class="expense-date">23 de Maio</div></div>
+              <div class="expense-amount">R$ 9,90</div>
+            </div>
+            <div class="expense-item">
+              <div class="expense-icon">🛒</div>
+              <div class="expense-info"><div class="expense-name">Mercado Extra</div><div class="expense-date">22 de Maio</div></div>
+              <div class="expense-amount">R$ 87,30</div>
+            </div>
+            <div class="expense-item">
+              <div class="expense-icon">🥪</div>
+              <div class="expense-info"><div class="expense-name">Lanche</div><div class="expense-date">22 de Maio</div></div>
+              <div class="expense-amount">R$ 14,00</div>
+            </div>
+          </div>
+          <div class="view-all" style="border-top:1px solid #F0F0EE;padding-top:10px;margin-top:8px;">Ver todos os gastos →</div>
+        </div>
+
+        <!-- AI ASSISTANT — col 3, row 2 -->
+        <div class="ai-card">
+          <div class="ai-header">
+            <span class="insight-star">✦</span>
+            <span class="ai-title">Assistente IA</span>
+            <span class="ai-badge">BETA</span>
+          </div>
+          <div class="chat-messages">
+            <div class="msg-user">Posso sair esse final de semana?</div>
+            <div class="msg-ai">
+              <div class="ai-avatar">🤖</div>
+              <div class="msg-ai-bubble">Considerando seus gastos atuais, você tem <strong>R$ 880,00</strong> disponíveis. Se mantiver o ritmo, poderá gastar até <strong>R$ 80,00</strong> no fim de semana sem comprometer seu orçamento.</div>
+            </div>
+          </div>
+          <div class="ai-input">
+            <span class="ai-input-text">Pergunte algo...</span>
+            <div class="ai-send">›</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECURITY BAR -->
+      <div class="security-bar">
+        <div class="security-dot">🛡</div>
+        <span><strong style="color:#555;">Seus dados estão seguros com a gente.</strong> O Drakma não compartilha suas informações com terceiros.</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

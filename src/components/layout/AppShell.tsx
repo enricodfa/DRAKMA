@@ -3,11 +3,17 @@
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+type AppShellProps = {
+  children: React.ReactNode
+  colorScheme?: 'light' | 'dark'
+}
+
+export default function AppShell({ children, colorScheme = 'light' }: AppShellProps) {
   const [expanded, setExpanded] = useState(true)
+  const bg = colorScheme === 'dark' ? '#0F0F15' : '#F4F4F2'
 
   return (
-    <div className="flex h-full" style={{ backgroundColor: '#F4F4F2' }}>
+    <div className="flex h-full" style={{ backgroundColor: bg }}>
       <div
         style={{
           width: expanded ? 220 : 56,

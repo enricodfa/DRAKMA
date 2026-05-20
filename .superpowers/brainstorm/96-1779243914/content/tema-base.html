@@ -1,0 +1,164 @@
+<h2>Qual é o tema base do Drakma?</h2>
+<p class="subtitle">A imagem de referência usa fundo claro, mas a paleta definida é escura/dourada. Como deve ser a interface principal?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="dark" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1B1B1F; padding:20px; border-radius:8px; min-height:220px; display:flex; flex-direction:column; gap:12px;">
+      <!-- Sidebar mockup -->
+      <div style="display:flex; gap:10px; height:100%;">
+        <div style="background:#2A2A31; border-radius:6px; width:56px; padding:10px 6px; display:flex; flex-direction:column; gap:8px; align-items:center;">
+          <div style="width:28px;height:28px;background:#C9A86A;border-radius:6px;"></div>
+          <div style="width:22px;height:3px;background:#C9A86A;border-radius:2px;margin-top:6px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="color:#F7F7F5;font-size:11px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+              <div style="color:#6B6B80;font-size:9px;font-family:sans-serif;">Maio de 2024</div>
+            </div>
+            <div style="background:#C9A86A;color:#1B1B1F;font-size:9px;padding:4px 8px;border-radius:5px;font-weight:700;font-family:sans-serif;">+ Gasto</div>
+          </div>
+          <!-- Cards -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:#2A2A31;border-radius:6px;padding:8px;">
+              <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;">Receitas</div>
+              <div style="color:#C9A86A;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+            </div>
+            <div style="background:#2A2A31;border-radius:6px;padding:8px;">
+              <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;">Gastos</div>
+              <div style="color:#E05C5C;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+            </div>
+            <div style="background:#2A2A31;border-radius:6px;padding:8px;">
+              <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;">Saldo</div>
+              <div style="color:#F7F7F5;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 880</div>
+            </div>
+            <div style="background:#2A2A31;border-radius:6px;padding:8px;">
+              <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;">Previsão</div>
+              <div style="color:#C9A86A;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 120</div>
+            </div>
+          </div>
+          <!-- Chart placeholder -->
+          <div style="background:#2A2A31;border-radius:6px;padding:8px;flex:1;">
+            <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;margin-bottom:6px;">Gastos por categoria</div>
+            <div style="display:flex;gap:4px;align-items:flex-end;height:40px;">
+              <div style="width:10px;background:#C9A86A;border-radius:2px;height:80%;"></div>
+              <div style="width:10px;background:#C9A86A80;border-radius:2px;height:50%;"></div>
+              <div style="width:10px;background:#C9A86A60;border-radius:2px;height:60%;"></div>
+              <div style="width:10px;background:#C9A86A40;border-radius:2px;height:30%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark Premium</h3>
+      <p>Fundo escuro grafite (#1B1B1F) com acentos dourados. Visual premium, moderno e diferenciado. Remete a fintech de alto padrão.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="light" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE; padding:20px; border-radius:8px; min-height:220px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; gap:10px; height:100%;">
+        <div style="background:#1B1B1F; border-radius:6px; width:56px; padding:10px 6px; display:flex; flex-direction:column; gap:8px; align-items:center;">
+          <div style="width:28px;height:28px;background:#C9A86A;border-radius:6px;"></div>
+          <div style="width:22px;height:3px;background:#C9A86A;border-radius:2px;margin-top:6px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#3A3A45;border-radius:2px;"></div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="color:#1B1B1F;font-size:11px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+              <div style="color:#888;font-size:9px;font-family:sans-serif;">Maio de 2024</div>
+            </div>
+            <div style="background:#C9A86A;color:#1B1B1F;font-size:9px;padding:4px 8px;border-radius:5px;font-weight:700;font-family:sans-serif;">+ Gasto</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Receitas</div>
+              <div style="color:#C9A86A;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Gastos</div>
+              <div style="color:#E05C5C;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Saldo</div>
+              <div style="color:#1B1B1F;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 880</div>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Previsão</div>
+              <div style="color:#C9A86A;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 120</div>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:8px;flex:1;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+            <div style="color:#888;font-size:8px;font-family:sans-serif;margin-bottom:6px;">Gastos por categoria</div>
+            <div style="display:flex;gap:4px;align-items:flex-end;height:40px;">
+              <div style="width:10px;background:#C9A86A;border-radius:2px;height:80%;"></div>
+              <div style="width:10px;background:#C9A86A80;border-radius:2px;height:50%;"></div>
+              <div style="width:10px;background:#C9A86A60;border-radius:2px;height:60%;"></div>
+              <div style="width:10px;background:#C9A86A40;border-radius:2px;height:30%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Light com Sidebar Dark</h3>
+      <p>Área principal clara (#F7F7F5) com sidebar escura e acentos dourados. Mais próximo da imagem de referência. Clean e acessível.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="dark-sidebar-only" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE; padding:20px; border-radius:8px; min-height:220px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; gap:10px; height:100%;">
+        <div style="background:#2A2A31; border-radius:6px; width:56px; padding:10px 6px; display:flex; flex-direction:column; gap:8px; align-items:center;">
+          <div style="width:28px;height:28px;background:#C9A86A;border-radius:6px;"></div>
+          <div style="width:22px;height:3px;background:#C9A86A;border-radius:2px;margin-top:6px;"></div>
+          <div style="width:22px;height:3px;background:#4A4A55;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#4A4A55;border-radius:2px;"></div>
+          <div style="width:22px;height:3px;background:#4A4A55;border-radius:2px;"></div>
+          <div style="margin-top:auto;width:32px;height:18px;background:#C9A86A20;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+            <div style="width:18px;height:18px;background:#C9A86A;border-radius:50%;"></div>
+          </div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="color:#1B1B1F;font-size:11px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+              <div style="color:#888;font-size:9px;font-family:sans-serif;">Maio de 2024</div>
+            </div>
+            <div style="background:#1B1B1F;color:#C9A86A;font-size:9px;padding:4px 8px;border-radius:5px;font-weight:700;font-family:sans-serif;border:1px solid #C9A86A;">+ Gasto</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:2px solid #C9A86A;">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Receitas</div>
+              <div style="color:#1B1B1F;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+            </div>
+            <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:2px solid #E05C5C;">
+              <div style="color:#888;font-size:8px;font-family:sans-serif;">Gastos</div>
+              <div style="color:#E05C5C;font-size:11px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+            </div>
+          </div>
+          <div style="background:#1B1B1F;border-radius:6px;padding:8px;flex:1;">
+            <div style="color:#C9A86A;font-size:8px;font-family:sans-serif;margin-bottom:4px;">✦ Insight IA</div>
+            <div style="color:#F7F7F5;font-size:8px;font-family:sans-serif;line-height:1.4;">Você gastou R$140 com delivery — 43% do total.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Híbrido Contraste Alto</h3>
+      <p>Sidebar grafite escuro, conteúdo branco com detalhes dourados, cards de destaque em dark. O dourado aparece apenas onde importa.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px; text-align:center;">Clique para selecionar. Responda no terminal quando estiver pronto.</p>

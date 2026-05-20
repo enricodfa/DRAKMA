@@ -1,3 +1,5 @@
+'use client'
+
 import { TrendingUp, TrendingDown, Wallet, CalendarCheck } from 'lucide-react'
 import { financialSummary } from '@/lib/mock-data'
 import { formatCurrency } from '@/lib/utils'

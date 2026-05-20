@@ -1,0 +1,212 @@
+<h2>Como deve ser a sidebar?</h2>
+<p class="subtitle">Tamanho e estilo da navegação lateral — impacta diretamente quanto espaço sobra para o conteúdo principal.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="expanded" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE; padding:16px; border-radius:8px; min-height:240px; display:flex; gap:10px;">
+      <!-- Sidebar expandida -->
+      <div style="background:#1B1B1F; border-radius:8px; width:130px; padding:14px 10px; display:flex; flex-direction:column; gap:4px; flex-shrink:0;">
+        <!-- Logo -->
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #2A2A31;">
+          <div style="width:22px;height:22px;background:#C9A86A;border-radius:5px;"></div>
+          <div>
+            <div style="color:#F7F7F5;font-size:10px;font-weight:800;font-family:sans-serif;letter-spacing:0.5px;">DRAKMA</div>
+            <div style="color:#6B6B80;font-size:7px;font-family:sans-serif;">suas finanças</div>
+          </div>
+        </div>
+        <!-- Nav items -->
+        <div style="background:#C9A86A20;border-radius:5px;padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#C9A86A;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#C9A86A;font-size:8px;font-weight:600;font-family:sans-serif;">Dashboard</div>
+        </div>
+        <div style="padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#4A4A55;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:8px;font-family:sans-serif;">Gastos</div>
+        </div>
+        <div style="padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#4A4A55;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:8px;font-family:sans-serif;">Receitas</div>
+        </div>
+        <div style="padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#4A4A55;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:8px;font-family:sans-serif;">Categorias</div>
+        </div>
+        <div style="padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#4A4A55;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:8px;font-family:sans-serif;">Insights IA</div>
+        </div>
+        <div style="padding:5px 7px;display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;background:#4A4A55;border-radius:3px;flex-shrink:0;"></div>
+          <div style="color:#6B6B80;font-size:8px;font-family:sans-serif;">Metas <span style="color:#C9A86A;font-size:6px;">breve</span></div>
+        </div>
+        <!-- Footer -->
+        <div style="margin-top:auto;padding:7px 7px;background:#2A2A31;border-radius:5px;display:flex;align-items:center;gap:6px;">
+          <div style="width:20px;height:20px;background:#C9A86A;border-radius:50%;flex-shrink:0;"></div>
+          <div>
+            <div style="color:#F7F7F5;font-size:7px;font-weight:600;font-family:sans-serif;">Lucas</div>
+            <div style="color:#6B6B80;font-size:6px;font-family:sans-serif;">Plano Gratuito</div>
+          </div>
+        </div>
+      </div>
+      <!-- Conteúdo principal (indicativo) -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+        <div style="color:#1B1B1F;font-size:10px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Receitas</div>
+            <div style="color:#C9A86A;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Gastos</div>
+            <div style="color:#E05C5C;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:8px;flex:1;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:7px;font-family:sans-serif;margin-bottom:5px;">Gastos recentes</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="display:flex;justify-content:space-between;"><span style="color:#333;font-size:7px;font-family:sans-serif;">iFood</span><span style="color:#E05C5C;font-size:7px;font-family:sans-serif;">-R$35</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:#333;font-size:7px;font-family:sans-serif;">Uber</span><span style="color:#E05C5C;font-size:7px;font-family:sans-serif;">-R$18</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:#333;font-size:7px;font-family:sans-serif;">Mercado</span><span style="color:#E05C5C;font-size:7px;font-family:sans-serif;">-R$87</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sidebar Expandida (~220px)</h3>
+      <p>Sempre visível com ícone + texto. Padrão da imagem de referência. Mais orientadora para o usuário, ocupa mais espaço.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="compact" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE; padding:16px; border-radius:8px; min-height:240px; display:flex; gap:10px;">
+      <!-- Sidebar compacta -->
+      <div style="background:#1B1B1F; border-radius:8px; width:48px; padding:12px 8px; display:flex; flex-direction:column; gap:6px; align-items:center; flex-shrink:0;">
+        <div style="width:24px;height:24px;background:#C9A86A;border-radius:6px;margin-bottom:8px;"></div>
+        <div style="width:20px;height:20px;background:#C9A86A20;border-radius:5px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:10px;height:10px;background:#C9A86A;border-radius:2px;"></div>
+        </div>
+        <div style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;"></div>
+        </div>
+        <div style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;"></div>
+        </div>
+        <div style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;"></div>
+        </div>
+        <div style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;"></div>
+        </div>
+        <div style="margin-top:auto;width:26px;height:26px;background:#C9A86A;border-radius:50%;"></div>
+      </div>
+      <!-- Conteúdo principal (indicativo) -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+        <div style="color:#1B1B1F;font-size:10px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Receitas</div>
+            <div style="color:#C9A86A;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Gastos</div>
+            <div style="color:#E05C5C;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Saldo</div>
+            <div style="color:#1B1B1F;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 880</div>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:8px;flex:1;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:7px;font-family:sans-serif;margin-bottom:5px;">Gastos por categoria</div>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <div style="width:50px;height:50px;border-radius:50%;background:conic-gradient(#C9A86A 0deg 155deg, #E05C5C 155deg 223deg, #4B9B7A 223deg 281deg, #8B7EC8 281deg 360deg);"></div>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="display:flex;align-items:center;gap:3px;"><div style="width:6px;height:6px;background:#C9A86A;border-radius:1px;"></div><span style="font-size:6px;color:#555;font-family:sans-serif;">Delivery 43%</span></div>
+              <div style="display:flex;align-items:center;gap:3px;"><div style="width:6px;height:6px;background:#E05C5C;border-radius:1px;"></div><span style="font-size:6px;color:#555;font-family:sans-serif;">Transporte 19%</span></div>
+              <div style="display:flex;align-items:center;gap:3px;"><div style="width:6px;height:6px;background:#4B9B7A;border-radius:1px;"></div><span style="font-size:6px;color:#555;font-family:sans-serif;">Alimentação 16%</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#1B1B1F;border-radius:6px;padding:8px;">
+          <div style="color:#C9A86A;font-size:7px;font-family:sans-serif;">✦ Assistente IA</div>
+          <div style="color:#F7F7F5;font-size:7px;font-family:sans-serif;margin-top:3px;">Posso sair esse final de semana?</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sidebar Compacta (~56px)</h3>
+      <p>Só ícones, tooltip no hover. Maximiza área de conteúdo. Visual mais minimalista tipo Linear/Notion. Usuário aprende rápido.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="collapsible" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#F0F0EE; padding:16px; border-radius:8px; min-height:240px; display:flex; gap:10px; position:relative;">
+      <!-- Sidebar expandida com indicador de colapso -->
+      <div style="background:#1B1B1F; border-radius:8px; width:110px; padding:12px 9px; display:flex; flex-direction:column; gap:4px; flex-shrink:0; position:relative;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #2A2A31;">
+          <div style="display:flex;align-items:center;gap:5px;">
+            <div style="width:18px;height:18px;background:#C9A86A;border-radius:4px;"></div>
+            <div style="color:#F7F7F5;font-size:9px;font-weight:800;font-family:sans-serif;">DRAKMA</div>
+          </div>
+          <div style="width:14px;height:14px;background:#2A2A31;border-radius:3px;display:flex;align-items:center;justify-content:center;">
+            <div style="width:8px;height:2px;background:#6B6B80;border-radius:1px;"></div>
+          </div>
+        </div>
+        <div style="background:#C9A86A15;border-radius:5px;padding:4px 6px;display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#C9A86A;border-radius:2px;flex-shrink:0;"></div>
+          <div style="color:#C9A86A;font-size:7px;font-weight:600;font-family:sans-serif;">Dashboard</div>
+        </div>
+        <div style="padding:4px 6px;display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:7px;font-family:sans-serif;">Gastos</div>
+        </div>
+        <div style="padding:4px 6px;display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:7px;font-family:sans-serif;">Receitas</div>
+        </div>
+        <div style="padding:4px 6px;display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;flex-shrink:0;"></div>
+          <div style="color:#9090A0;font-size:7px;font-family:sans-serif;">Insights IA</div>
+        </div>
+        <div style="padding:4px 6px;display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#4A4A55;border-radius:2px;flex-shrink:0;"></div>
+          <div style="color:#6B6B80;font-size:7px;font-family:sans-serif;">Metas</div>
+        </div>
+        <div style="margin-top:auto;padding:5px 6px;background:#2A2A31;border-radius:5px;display:flex;align-items:center;gap:5px;">
+          <div style="width:16px;height:16px;background:#C9A86A;border-radius:50%;flex-shrink:0;"></div>
+          <div>
+            <div style="color:#F7F7F5;font-size:6px;font-weight:600;font-family:sans-serif;">Lucas</div>
+            <div style="color:#6B6B80;font-size:5px;font-family:sans-serif;">Gratuito</div>
+          </div>
+        </div>
+      </div>
+      <!-- Seta indicando colapso -->
+      <div style="position:absolute;left:118px;top:50%;transform:translateY(-50%);background:#C9A86A;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:#1B1B1F;z-index:2;">‹</div>
+      <!-- Conteúdo principal -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px;margin-left:4px;">
+        <div style="color:#1B1B1F;font-size:10px;font-weight:700;font-family:sans-serif;">Olá, Lucas 👋</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+          <div style="background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Receitas</div>
+            <div style="color:#C9A86A;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 1.200</div>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+            <div style="color:#999;font-size:7px;font-family:sans-serif;">Gastos</div>
+            <div style="color:#E05C5C;font-size:10px;font-weight:700;font-family:sans-serif;">R$ 320</div>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:7px;flex:1;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+          <div style="color:#999;font-size:7px;font-family:sans-serif;">Gastos recentes</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sidebar Expansível (toggle)</h3>
+      <p>Começa expandida, pode colapsar para ícones. Melhor dos dois mundos — orientação inicial + espaço quando precisa. Mais complexo de implementar.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;text-align:center;">Clique para selecionar. Responda no terminal quando estiver pronto.</p>

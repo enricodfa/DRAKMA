@@ -18,13 +18,15 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
       >
         <div className="flex items-center gap-2">
           <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+            className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
             style={{ backgroundColor: '#C9A86A' }}
           >
-            <span className="text-[11px] font-bold" style={{ color: '#1B1B1F' }}>D</span>
+            🦉
           </div>
           {expanded && (
-            <span className="text-sm font-semibold text-white">Drakma</span>
+            <span className="text-sm font-bold tracking-wide" style={{ color: '#C9A86A', letterSpacing: '0.05em' }}>
+              DRAKMA
+            </span>
           )}
         </div>
 
