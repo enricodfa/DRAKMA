@@ -1,25 +1,24 @@
 'use client'
 
 import { useState } from 'react'
+import Sidebar from './Sidebar'
 
-type AppShellProps = {
-  children: React.ReactNode
-}
-
-export default function AppShell({ children }: AppShellProps) {
+export default function AppShell({ children }: { children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(true)
 
   return (
     <div className="flex h-full" style={{ backgroundColor: '#F4F4F2' }}>
-      {/* Sidebar placeholder — replaced in Task 8 */}
       <div
         style={{
           width: expanded ? 220 : 56,
           minWidth: expanded ? 220 : 56,
           transition: 'width 250ms ease, min-width 250ms ease',
-          backgroundColor: '#1B1B1F',
+          overflow: 'visible',
+          position: 'relative',
         }}
-      />
+      >
+        <Sidebar expanded={expanded} onToggle={() => setExpanded((v) => !v)} />
+      </div>
 
       <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
         {children}
@@ -27,6 +26,3 @@ export default function AppShell({ children }: AppShellProps) {
     </div>
   )
 }
-
-export { type AppShellProps }
-export { AppShell }
