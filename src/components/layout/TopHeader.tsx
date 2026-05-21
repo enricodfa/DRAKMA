@@ -17,8 +17,8 @@ export default function TopHeader() {
 
   return (
     <header
-      className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0"
-      style={{ backgroundColor: '#0F0F15', borderColor: '#1E1E28' }}
+      className="flex items-center justify-between px-6 border-b flex-shrink-0"
+      style={{ height: 69, backgroundColor: '#0F0F15', borderColor: '#1E1E28' }}
     >
       <div>
         <h1 className="text-base font-semibold" style={{ color: '#F0F0F5' }}>

@@ -14,8 +14,8 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
     <div className="flex flex-col h-full relative" style={{ backgroundColor: '#1B1B1F' }}>
       {/* Header: logo + toggle */}
       <div
-        className="flex items-center h-14 border-b px-4"
-        style={{ borderColor: '#2A2A31', justifyContent: expanded ? 'space-between' : 'center' }}
+        className="flex items-center border-b px-4"
+        style={{ borderColor: '#2A2A31', height: 69, justifyContent: expanded ? 'space-between' : 'center' }}
       >
         {expanded && (
           <div className="flex flex-col leading-tight">
