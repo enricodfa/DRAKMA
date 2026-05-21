@@ -7,6 +7,10 @@ import { usePeriod } from '@/store/period'
 const MONTHS_SHORT = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 const MONTHS_FULL = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
+function getBrasiliaDate() {
+  return new Date(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date()))
+}
+
 type Props = {
   align?: 'left' | 'right'
 }
@@ -16,6 +20,10 @@ export default function MonthPicker({ align = 'right' }: Props) {
   const [open, setOpen] = useState(false)
   const [pickerYear, setPickerYear] = useState(year)
   const ref = useRef<HTMLDivElement>(null)
+
+  const now = getBrasiliaDate()
+  const currentMonth = now.getMonth()
+  const currentYear = now.getFullYear()
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -29,6 +37,11 @@ export default function MonthPicker({ align = 'right' }: Props) {
     setPeriod(m, pickerYear)
     setOpen(false)
   }
+
+  const isFuture = (m: number) =>
+    pickerYear > currentYear || (pickerYear === currentYear && m > currentMonth)
+
+  const canGoNextYear = pickerYear < currentYear
 
   return (
     <div className="relative" ref={ref}>
@@ -51,6 +64,7 @@ export default function MonthPicker({ align = 'right' }: Props) {
             [align === 'right' ? 'right' : 'left']: 0,
           }}
         >
+          {/* Year navigation */}
           <div className="flex items-center justify-between mb-3">
             <button
               onClick={() => setPickerYear(y => y - 1)}
@@ -61,28 +75,33 @@ export default function MonthPicker({ align = 'right' }: Props) {
             </button>
             <span className="text-sm font-semibold" style={{ color: '#F0F0F5' }}>{pickerYear}</span>
             <button
-              onClick={() => setPickerYear(y => y + 1)}
-              className="w-6 h-6 flex items-center justify-center rounded-lg hover:opacity-70"
-              style={{ color: '#9090A0' }}
+              onClick={() => canGoNextYear && setPickerYear(y => y + 1)}
+              disabled={!canGoNextYear}
+              className="w-6 h-6 flex items-center justify-center rounded-lg"
+              style={{ color: canGoNextYear ? '#9090A0' : '#2A2A38', cursor: canGoNextYear ? 'pointer' : 'default' }}
             >
               <ChevronRight size={14} />
             </button>
           </div>
 
+          {/* Month grid */}
           <div className="grid grid-cols-4 gap-1">
             {MONTHS_SHORT.map((m, i) => {
               const isSelected = i === month && pickerYear === year
+              const future = isFuture(i)
               return (
                 <button
                   key={m}
-                  onClick={() => select(i)}
+                  onClick={() => !future && select(i)}
+                  disabled={future}
                   className="py-1.5 rounded-lg text-xs font-medium transition-colors"
                   style={{
                     backgroundColor: isSelected ? '#C9A86A' : 'transparent',
-                    color: isSelected ? '#1B1B1F' : '#9090A0',
+                    color: isSelected ? '#1B1B1F' : future ? '#2A2A38' : '#9090A0',
+                    cursor: future ? 'default' : 'pointer',
                   }}
-                  onMouseEnter={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.backgroundColor = '#2A2A38' }}
-                  onMouseLeave={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent' }}
+                  onMouseEnter={e => { if (!isSelected && !future) (e.currentTarget as HTMLElement).style.backgroundColor = '#2A2A38' }}
+                  onMouseLeave={e => { if (!isSelected && !future) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent' }}
                 >
                   {m}
                 </button>
