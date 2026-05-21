@@ -1,6 +1,6 @@
 'use client'
 
-import { PieChart, Pie, Cell, Label, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cell, Label } from 'recharts'
 import { formatCurrency } from '@/lib/utils'
 import type { Gasto } from '@/lib/supabase/queries'
 
@@ -23,13 +23,6 @@ export default function GastosRightPanel({ gastos }: Props) {
       percentage: total > 0 ? Math.round((value / total) * 100) : 0,
     }))
 
-  const monthMap: Record<string, number> = {}
-  gastos.forEach(g => {
-    const d = new Date(g.date + 'T12:00:00')
-    const key = d.toLocaleDateString('pt-BR', { month: 'short' })
-    monthMap[key] = (monthMap[key] ?? 0) + g.amount
-  })
-  const monthlyData = Object.entries(monthMap).slice(-6).map(([month, value]) => ({ month, value }))
 
   function CenterLabel() {
     return (
@@ -78,23 +71,6 @@ export default function GastosRightPanel({ gastos }: Props) {
         )}
       </div>
 
-      {/* Bar chart */}
-      {monthlyData.length > 0 && (
-        <div className="rounded-xl p-4" style={{ backgroundColor: '#16161E', border: '1px solid #2A2A38' }}>
-          <p className="text-xs font-semibold mb-3" style={{ color: '#F0F0F5' }}>Evolução mensal</p>
-          <ResponsiveContainer width="100%" height={120}>
-            <BarChart data={monthlyData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
-              <XAxis dataKey="month" tick={{ fill: '#6B6B80', fontSize: 10 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#6B6B80', fontSize: 10 }} axisLine={false} tickLine={false} />
-              <Tooltip
-                formatter={(v) => [formatCurrency(Number(v)), 'Gastos']}
-                contentStyle={{ backgroundColor: '#16161E', border: '1px solid #2A2A38', borderRadius: 8, fontSize: 11 }}
-              />
-              <Bar dataKey="value" fill="#C9A86A" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      )}
     </div>
   )
 }
