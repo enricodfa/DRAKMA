@@ -3,18 +3,15 @@
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
 import { useReceitas } from '@/hooks/useReceitas'
-import { useGastos } from '@/hooks/useGastos'
 import MonthPicker from '@/components/ui/MonthPicker'
 import ReceitasStatCards from '@/components/receitas/ReceitasStatCards'
 import ReceitasLineChart from '@/components/receitas/ReceitasLineChart'
 import ReceitasCategoryChart from '@/components/receitas/ReceitasCategoryChart'
 import ReceitasTable from '@/components/receitas/ReceitasTable'
-import ReceitasSummary from '@/components/receitas/ReceitasSummary'
 import AdicionarReceitaModal from '@/components/receitas/AdicionarReceitaModal'
 
 export default function ReceitasPage() {
   const { receitas, loading, add, remove } = useReceitas()
-  const { gastos } = useGastos()
   const [showModal, setShowModal] = useState(false)
 
   const monthMap: Record<string, number> = {}
@@ -24,7 +21,6 @@ export default function ReceitasPage() {
     monthMap[key] = (monthMap[key] ?? 0) + r.amount
   })
   const monthlyData = Object.entries(monthMap).map(([month, value]) => ({ month, value }))
-  const totalGastos = gastos.reduce((sum, g) => sum + g.amount, 0)
 
   return (
     <div className="flex flex-col h-full overflow-hidden" style={{ backgroundColor: '#0F0F15' }}>
@@ -53,10 +49,7 @@ export default function ReceitasPage() {
               <ReceitasLineChart monthlyData={monthlyData} />
               <ReceitasCategoryChart receitas={receitas} />
             </div>
-            <div className="flex gap-4">
-              <div className="flex-1 min-w-0"><ReceitasTable receitas={receitas} onDelete={remove} /></div>
-              <div className="flex-shrink-0" style={{ width: 280 }}><ReceitasSummary receitas={receitas} totalGastos={totalGastos} /></div>
-            </div>
+            <ReceitasTable receitas={receitas} onDelete={remove} />
           </>
         )}
       </main>
