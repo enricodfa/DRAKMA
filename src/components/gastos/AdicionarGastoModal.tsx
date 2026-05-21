@@ -25,7 +25,7 @@ const inputStyle = {
 const labelStyle = { display: 'block', fontSize: 11, color: '#6B6B80', marginBottom: 6 }
 
 export default function AdicionarGastoModal({ onClose, onAdd, initial }: Props) {
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date())
   const [form, setForm] = useState({
     name: initial?.name ?? '',
     amount: initial?.amount?.toString() ?? '',

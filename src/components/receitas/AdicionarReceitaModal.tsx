@@ -24,7 +24,7 @@ const inputStyle = {
 const labelStyle = { display: 'block', fontSize: 11, color: '#6B6B80', marginBottom: 6 }
 
 export default function AdicionarReceitaModal({ onClose, onAdd }: Props) {
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date())
   const [form, setForm] = useState({
     name: '',
     amount: '',
