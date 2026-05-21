@@ -153,18 +153,6 @@ export default function LandingPage() {
           }} />
 
           <div style={{ maxWidth: 680, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
-            {/* Logo */}
-            <div className="animate-float animate-fade-up" style={{ display: 'inline-block', marginBottom: 28 }}>
-              <div style={{
-                width: 96, height: 96, margin: '0 auto',
-                borderRadius: 24, overflow: 'hidden',
-                border: `1.5px solid ${GOLD_BORDER}`,
-                boxShadow: `0 0 40px rgba(201,168,106,0.18), 0 0 0 1px rgba(201,168,106,0.08)`,
-              }}>
-                <Image src="/DRAKMA LOGO 2.0.png" alt="Drakma" width={96} height={96} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-              </div>
-            </div>
-
             {/* Badge */}
             <div className="animate-fade-up anim-d1" style={{ display: 'flex', justifyContent: 'center', marginBottom: 22 }}>
               <span style={{
