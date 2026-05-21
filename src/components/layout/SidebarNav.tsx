@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, CreditCard, TrendingUp, Sparkles, Target, Settings } from 'lucide-react'
+import { LayoutDashboard, CreditCard, TrendingUp, Sparkles, Target, Settings, Bot } from 'lucide-react'
 
 const navItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
@@ -10,6 +10,7 @@ const navItems = [
   { label: 'Receitas', icon: TrendingUp, href: '/receitas' },
   { label: 'Metas', icon: Target, href: '/metas' },
   { label: 'Insights IA', icon: Sparkles, href: '/insights', badge: 'em breve' },
+  { label: 'Assistente Drakma', icon: Bot, href: '/assistente', badge: 'premium', badgeGold: true },
   { label: 'Configurações', icon: Settings, href: '/configuracoes' },
 ]
 
@@ -18,7 +19,7 @@ export default function SidebarNav({ expanded }: { expanded: boolean }) {
 
   return (
     <nav className="flex flex-col gap-0.5 px-2">
-      {navItems.map(({ label, icon: Icon, href, badge }) => {
+      {navItems.map(({ label, icon: Icon, href, badge, badgeGold }) => {
         const active = pathname === href || pathname.startsWith(href + '/')
         return (
           <Link
@@ -44,7 +45,11 @@ export default function SidebarNav({ expanded }: { expanded: boolean }) {
                 {badge && (
                   <span
                     className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
-                    style={{ backgroundColor: '#2A2A31', color: '#6B6B80' }}
+                    style={{
+                      backgroundColor: badgeGold ? 'rgba(201,168,106,0.15)' : '#2A2A31',
+                      color: badgeGold ? '#C9A86A' : '#6B6B80',
+                      border: badgeGold ? '1px solid rgba(201,168,106,0.3)' : 'none',
+                    }}
                   >
                     {badge}
                   </span>
