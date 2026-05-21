@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { usePeriod } from '@/store/period'
 import {
   fetchGastos, insertGasto, patchGasto, removeGasto,
   type Gasto, type GastoInput,
 } from '@/lib/supabase/queries'
 
 export function useGastos() {
+  const { month, year } = usePeriod()
   const [gastos, setGastos] = useState<Gasto[]>([])
   const [loading, setLoading] = useState(true)
   const [userId, setUserId] = useState<string | null>(null)
@@ -22,12 +24,12 @@ export function useGastos() {
     if (!userId) return
     setLoading(true)
     try {
-      const data = await fetchGastos()
+      const data = await fetchGastos(year, month)
       setGastos(data)
     } finally {
       setLoading(false)
     }
-  }, [userId])
+  }, [userId, month, year])
 
   useEffect(() => { load() }, [load])
 

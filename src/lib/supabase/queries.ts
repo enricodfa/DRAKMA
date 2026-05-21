@@ -27,12 +27,21 @@ export type Receita = {
 export type GastoInput = Omit<Gasto, 'id' | 'created_at'>
 export type ReceitaInput = Omit<Receita, 'id' | 'created_at'>
 
+function monthRange(year: number, month: number) {
+  const start = `${year}-${String(month + 1).padStart(2, '0')}-01`
+  const end = new Date(year, month + 1, 0).toISOString().split('T')[0]
+  return { start, end }
+}
+
 // ─── GASTOS ───────────────────────────────────────────────────
-export async function fetchGastos(): Promise<Gasto[]> {
+export async function fetchGastos(year: number, month: number): Promise<Gasto[]> {
   const supabase = createClient()
+  const { start, end } = monthRange(year, month)
   const { data, error } = await supabase
     .from('gastos')
     .select('*')
+    .gte('date', start)
+    .lte('date', end)
     .order('date', { ascending: false })
   if (error) throw error
   return data ?? []
@@ -68,11 +77,14 @@ export async function removeGasto(id: string): Promise<void> {
 }
 
 // ─── RECEITAS ─────────────────────────────────────────────────
-export async function fetchReceitas(): Promise<Receita[]> {
+export async function fetchReceitas(year: number, month: number): Promise<Receita[]> {
   const supabase = createClient()
+  const { start, end } = monthRange(year, month)
   const { data, error } = await supabase
     .from('receitas')
     .select('*')
+    .gte('date', start)
+    .lte('date', end)
     .order('date', { ascending: false })
   if (error) throw error
   return data ?? []

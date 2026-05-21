@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { CalendarDays, ChevronDown, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { useGastos } from '@/hooks/useGastos'
 import GastosStatCards from '@/components/gastos/GastosStatCards'
 import GastosTable from '@/components/gastos/GastosTable'
 import GastosRightPanel from '@/components/gastos/GastosRightPanel'
 import AdicionarGastoModal from '@/components/gastos/AdicionarGastoModal'
+import MonthPicker from '@/components/ui/MonthPicker'
 
 export default function GastosPage() {
   const { gastos, loading, add, remove } = useGastos()
@@ -23,14 +24,7 @@ export default function GastosPage() {
           <p className="text-xs" style={{ color: '#6B6B80' }}>Acompanhe e gerencie todos os seus gastos.</p>
         </div>
         <div className="flex items-center gap-3">
-          <button
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium"
-            style={{ backgroundColor: '#16161E', border: '1px solid #2A2A38', color: '#D0D0D8' }}
-          >
-            <CalendarDays size={13} style={{ color: '#9090A0' }} />
-            {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
-            <ChevronDown size={12} style={{ color: '#6B6B80' }} />
-          </button>
+          <MonthPicker align="right" />
           <button
             onClick={() => setShowModal(true)}
             className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold"

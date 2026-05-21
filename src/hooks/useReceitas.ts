@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { usePeriod } from '@/store/period'
 import {
   fetchReceitas, insertReceita, patchReceita, removeReceita,
   type Receita, type ReceitaInput,
 } from '@/lib/supabase/queries'
 
 export function useReceitas() {
+  const { month, year } = usePeriod()
   const [receitas, setReceitas] = useState<Receita[]>([])
   const [loading, setLoading] = useState(true)
   const [userId, setUserId] = useState<string | null>(null)
@@ -22,12 +24,12 @@ export function useReceitas() {
     if (!userId) return
     setLoading(true)
     try {
-      const data = await fetchReceitas()
+      const data = await fetchReceitas(year, month)
       setReceitas(data)
     } finally {
       setLoading(false)
     }
-  }, [userId])
+  }, [userId, month, year])
 
   useEffect(() => { load() }, [load])
 
