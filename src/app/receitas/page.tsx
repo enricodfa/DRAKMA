@@ -29,7 +29,7 @@ export default function ReceitasPage() {
     <div className="flex flex-col h-full overflow-hidden" style={{ backgroundColor: '#0F0F15' }}>
       <header className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0" style={{ borderColor: '#1E1E28' }}>
         <div>
-          <h1 className="text-lg font-bold" style={{ color: '#F0F0F5' }}>Receitas</h1>
+          <h1 className="text-base font-semibold" style={{ color: '#F0F0F5' }}>Receitas</h1>
           <p className="text-xs" style={{ color: '#6B6B80' }}>Acompanhe todas as suas entradas de dinheiro.</p>
         </div>
         <div className="flex items-center gap-3">
