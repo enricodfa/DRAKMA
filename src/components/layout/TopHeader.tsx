@@ -1,12 +1,20 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { Bell, ChevronDown, Plus } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 
-type TopHeaderProps = {
-  name?: string
-}
+export default function TopHeader() {
+  const [name, setName] = useState('')
 
-export default function TopHeader({ name = 'Ana' }: TopHeaderProps) {
+  useEffect(() => {
+    createClient().auth.getUser().then(({ data }) => {
+      const fullName = data.user?.user_metadata?.full_name ?? data.user?.email ?? ''
+      const firstName = fullName.split(' ')[0]
+      setName(firstName)
+    })
+  }, [])
+
   return (
     <header
       className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0"
@@ -14,7 +22,7 @@ export default function TopHeader({ name = 'Ana' }: TopHeaderProps) {
     >
       <div>
         <h1 className="text-base font-semibold" style={{ color: '#F0F0F5' }}>
-          Olá, {name} 👋
+          Olá, {name}
         </h1>
         <p className="text-xs" style={{ color: '#6B6B80' }}>
           Aqui está o resumo das suas finanças
