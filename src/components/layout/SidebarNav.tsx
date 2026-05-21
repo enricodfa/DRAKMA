@@ -8,8 +8,8 @@ const navItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
   { label: 'Gastos', icon: CreditCard, href: '/gastos' },
   { label: 'Receitas', icon: TrendingUp, href: '/receitas' },
-  { label: 'Insights IA', icon: Sparkles, href: '/insights' },
   { label: 'Metas', icon: Target, href: '/metas' },
+  { label: 'Insights IA', icon: Sparkles, href: '/insights' },
   { label: 'Configurações', icon: Settings, href: '/configuracoes' },
 ]
 
