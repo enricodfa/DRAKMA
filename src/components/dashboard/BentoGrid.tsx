@@ -6,15 +6,7 @@ type Props = { gastos: Gasto[] }
 
 export default function BentoGrid({ gastos }: Props) {
   return (
-    <div
-      className="flex-1"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: 12,
-        minHeight: 0,
-      }}
-    >
+    <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3" style={{ minHeight: 0 }}>
       <CategoryChart gastos={gastos} />
       <RecentExpenses gastos={gastos} />
     </div>

@@ -57,9 +57,9 @@ export default function GastosTable({ gastos, onDelete }: Props) {
         </select>
       </div>
 
-      {/* Column headers */}
+      {/* Column headers — desktop only */}
       <div
-        className="grid text-[11px] px-5 py-2"
+        className="hidden md:grid text-[11px] px-5 py-2"
         style={{ gridTemplateColumns: '2fr 1.2fr 0.9fr 0.9fr 0.9fr 0.5fr', color: '#6B6B80', borderBottom: '1px solid #2A2A38' }}
       >
         <span>Descrição</span><span>Categoria</span><span>Data</span>
@@ -75,33 +75,52 @@ export default function GastosTable({ gastos, onDelete }: Props) {
         ) : paged.map((g, i) => {
           const colors = categoryColors[g.category] ?? { text: '#9090A0', bg: 'rgba(144,144,160,0.12)' }
           return (
-            <div
-              key={g.id}
-              className="grid items-center px-5 py-3 text-xs"
-              style={{
-                gridTemplateColumns: '2fr 1.2fr 0.9fr 0.9fr 0.9fr 0.5fr',
-                borderTop: i > 0 ? '1px solid #1E1E28' : undefined,
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-base">{g.icon}</span>
-                <span style={{ color: '#D0D0D8' }}>{g.name}</span>
-              </div>
-              <span>
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-medium" style={{ color: colors.text, backgroundColor: colors.bg }}>
-                  {g.category}
+            <div key={g.id} style={{ borderTop: i > 0 ? '1px solid #1E1E28' : undefined }}>
+              {/* Desktop row */}
+              <div
+                className="hidden md:grid items-center px-5 py-3 text-xs"
+                style={{ gridTemplateColumns: '2fr 1.2fr 0.9fr 0.9fr 0.9fr 0.5fr' }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{g.icon}</span>
+                  <span style={{ color: '#D0D0D8' }}>{g.name}</span>
+                </div>
+                <span>
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium" style={{ color: colors.text, backgroundColor: colors.bg }}>
+                    {g.category}
+                  </span>
                 </span>
-              </span>
-              <span style={{ color: '#9090A0' }}>
-                {new Date(g.date + 'T12:00:00').toLocaleDateString('pt-BR')}
-              </span>
-              <span className="font-semibold tabular-nums" style={{ color: '#E05C5C' }}>
-                -{formatCurrency(g.amount)}
-              </span>
-              <span style={{ color: '#9090A0' }}>{METHOD_LABEL[g.method] ?? g.method}</span>
-              <div className="flex items-center gap-2">
+                <span style={{ color: '#9090A0' }}>
+                  {new Date(g.date + 'T12:00:00').toLocaleDateString('pt-BR')}
+                </span>
+                <span className="font-semibold tabular-nums" style={{ color: '#E05C5C' }}>
+                  -{formatCurrency(g.amount)}
+                </span>
+                <span style={{ color: '#9090A0' }}>{METHOD_LABEL[g.method] ?? g.method}</span>
                 <button onClick={() => onDelete(g.id)} className="hover:opacity-70 transition-opacity" style={{ color: '#6B6B80' }}>
                   <Trash2 size={13} />
+                </button>
+              </div>
+
+              {/* Mobile row */}
+              <div className="flex md:hidden items-center px-4 py-3 gap-3">
+                <span className="text-lg">{g.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate" style={{ color: '#D0D0D8' }}>{g.name}</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="px-1.5 py-0.5 rounded-full text-[10px] font-medium" style={{ color: colors.text, backgroundColor: colors.bg }}>
+                      {g.category}
+                    </span>
+                    <span className="text-[11px]" style={{ color: '#6B6B80' }}>
+                      {new Date(g.date + 'T12:00:00').toLocaleDateString('pt-BR')}
+                    </span>
+                  </div>
+                </div>
+                <span className="font-semibold text-sm tabular-nums" style={{ color: '#E05C5C' }}>
+                  -{formatCurrency(g.amount)}
+                </span>
+                <button onClick={() => onDelete(g.id)} className="hover:opacity-70 transition-opacity ml-1" style={{ color: '#6B6B80' }}>
+                  <Trash2 size={15} />
                 </button>
               </div>
             </div>

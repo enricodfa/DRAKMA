@@ -37,7 +37,7 @@ export default function GastosStatCards({ gastos }: Props) {
   ]
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {cards.map((card) => (
         <div
           key={card.label}

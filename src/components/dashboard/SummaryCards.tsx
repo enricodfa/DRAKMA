@@ -19,7 +19,7 @@ export default function SummaryCards({ receitas, gastos, saldo, previsao }: Prop
   ]
 
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {cards.map((card) => {
         const Icon = card.icon
         return (
