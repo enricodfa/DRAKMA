@@ -19,8 +19,8 @@ export default function AppShell({ children, colorScheme = 'light' }: AppShellPr
       <div
         className="hidden md:block flex-shrink-0"
         style={{
-          width: expanded ? 256 : 56,
-          minWidth: expanded ? 256 : 56,
+          width: expanded ? 280 : 56,
+          minWidth: expanded ? 280 : 56,
           transition: 'width 250ms ease, min-width 250ms ease',
           overflow: 'visible',
           position: 'relative',

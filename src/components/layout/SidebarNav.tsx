@@ -41,7 +41,7 @@ export default function SidebarNav({ expanded }: { expanded: boolean }) {
             <Icon size={18} strokeWidth={1.8} style={{ flexShrink: 0 }} />
             {expanded && (
               <>
-                <span className="flex-1 whitespace-nowrap overflow-hidden">{label}</span>
+                <span className="min-w-0 whitespace-nowrap">{label}</span>
                 {badge && (
                   <span
                     className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
