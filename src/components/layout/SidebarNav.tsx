@@ -9,7 +9,7 @@ const navItems = [
   { label: 'Gastos', icon: CreditCard, href: '/gastos' },
   { label: 'Receitas', icon: TrendingUp, href: '/receitas' },
   { label: 'Metas', icon: Target, href: '/metas' },
-  { label: 'Insights IA', icon: Sparkles, href: '/insights' },
+  { label: 'Insights IA', icon: Sparkles, href: '/insights', badge: 'em breve' },
   { label: 'Configurações', icon: Settings, href: '/configuracoes' },
 ]
 
@@ -18,7 +18,7 @@ export default function SidebarNav({ expanded }: { expanded: boolean }) {
 
   return (
     <nav className="flex flex-col gap-0.5 px-2">
-      {navItems.map(({ label, icon: Icon, href }) => {
+      {navItems.map(({ label, icon: Icon, href, badge }) => {
         const active = pathname === href || pathname.startsWith(href + '/')
         return (
           <Link
@@ -39,7 +39,17 @@ export default function SidebarNav({ expanded }: { expanded: boolean }) {
           >
             <Icon size={18} strokeWidth={1.8} style={{ flexShrink: 0 }} />
             {expanded && (
-              <span className="flex-1 whitespace-nowrap overflow-hidden">{label}</span>
+              <>
+                <span className="flex-1 whitespace-nowrap overflow-hidden">{label}</span>
+                {badge && (
+                  <span
+                    className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
+                    style={{ backgroundColor: '#2A2A31', color: '#6B6B80' }}
+                  >
+                    {badge}
+                  </span>
+                )}
+              </>
             )}
           </Link>
         )
