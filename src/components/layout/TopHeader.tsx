@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Bell, ChevronDown, Plus } from 'lucide-react'
+import { Bell, ChevronDown } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function TopHeader() {
@@ -43,14 +43,6 @@ export default function TopHeader() {
           style={{ borderColor: '#2A2A38', color: '#6B6B80', backgroundColor: '#16161E' }}
         >
           <Bell size={15} />
-        </button>
-
-        <button
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold"
-          style={{ backgroundColor: '#C9A86A', color: '#1B1B1F' }}
-        >
-          <Plus size={13} />
-          Adicionar gasto
         </button>
       </div>
     </header>
