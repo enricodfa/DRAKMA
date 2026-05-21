@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { TrendingDown, TrendingUp, PieChart, Lock, Zap, CalendarDays, ArrowRight, Check } from 'lucide-react'
@@ -116,9 +115,9 @@ export default function LandingPage() {
             className="flex items-center justify-between"
             style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 64 }}
           >
-            <div className="flex items-center gap-3">
-              <Image src="/DRAKMA LOGO 2.0.png" alt="Drakma" width={32} height={32} style={{ borderRadius: 8 }} />
+            <div className="flex items-center gap-2">
               <span style={{ fontSize: 15, fontWeight: 800, letterSpacing: '0.12em', color: GOLD }}>DRAKMA</span>
+              <span style={{ fontSize: 11, fontWeight: 500, color: MUTED, letterSpacing: '0.05em' }}>V1.0</span>
             </div>
             <button
               onClick={handleLogin}
@@ -430,13 +429,6 @@ export default function LandingPage() {
                 pointerEvents: 'none',
               }} />
 
-              <Image
-                src="/DRAKMA LOGO 2.0.png"
-                alt="Drakma"
-                width={64} height={64}
-                style={{ borderRadius: 16, marginBottom: 24, border: `1px solid ${GOLD_BORDER}` }}
-              />
-
               <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 800, color: TEXT, marginBottom: 14, lineHeight: 1.2 }}>
                 Pronto para ter clareza financeira?
               </h2>
@@ -483,10 +475,9 @@ export default function LandingPage() {
           <div
             style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Image src="/DRAKMA LOGO 2.0.png" alt="Drakma" width={24} height={24} style={{ borderRadius: 6 }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', color: GOLD }}>DRAKMA</span>
-              <span style={{ fontSize: 12, color: FAINT }}>v1.0</span>
+              <span style={{ fontSize: 11, color: FAINT }}>V1.0</span>
             </div>
             <p style={{ fontSize: 12, color: FAINT }}>
               © 2025 Drakma · Finanças Inteligentes
