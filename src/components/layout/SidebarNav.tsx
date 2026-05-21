@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, CreditCard, TrendingUp, Sparkles, Target, Settings, Bot, FileBarChart } from 'lucide-react'
+import { LayoutDashboard, CreditCard, TrendingUp, Sparkles, Target, Settings, Bot, FileBarChart, GraduationCap } from 'lucide-react'
 
 const navItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
@@ -12,6 +12,7 @@ const navItems = [
   { label: 'Insights IA', icon: Sparkles, href: '/insights', badge: 'em breve' },
   { label: 'Assistente Drakma', icon: Bot, href: '/assistente', badge: 'premium', badgeGold: true },
   { label: 'Relatórios', icon: FileBarChart, href: '/relatorios', badge: 'premium', badgeGold: true },
+  { label: 'Modo Universitário', icon: GraduationCap, href: '/universitario', badge: 'premium', badgeGold: true },
   { label: 'Configurações', icon: Settings, href: '/configuracoes' },
 ]
 
