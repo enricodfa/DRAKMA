@@ -170,6 +170,46 @@ export function findAIResponse(text: string): string {
   )
 }
 
+export type Income = {
+  id: string
+  name: string
+  date: string
+  amount: number
+  icon: string
+  category: string
+  method: 'pix' | 'transferencia' | 'ted' | 'deposito'
+}
+
+export const allIncomes: Income[] = [
+  { id: '1', name: 'Bolsa de Estudos - UFSC', date: '2024-05-01', amount: 800,  icon: '🎓', category: 'Bolsa de Estudos', method: 'pix' },
+  { id: '2', name: 'Freelance Design',         date: '2024-05-15', amount: 300,  icon: '💼', category: 'Trabalho',         method: 'pix' },
+  { id: '3', name: 'Ajuda dos pais',           date: '2024-05-05', amount: 100,  icon: '👨‍👩‍👧', category: 'Ajuda dos pais',   method: 'transferencia' },
+  { id: '4', name: 'Reembolso Eventos',        date: '2024-05-20', amount: 0,    icon: '•••', category: 'Outros',           method: 'pix' },
+]
+
+export const incomeCategories: Category[] = [
+  { name: 'Bolsa de Estudos', value: 800,  color: '#C9A86A', percentage: 67 },
+  { name: 'Trabalho',         value: 300,  color: '#7A5C2E', percentage: 25 },
+  { name: 'Ajuda dos pais',   value: 100,  color: '#D9BE87', percentage: 8  },
+  { name: 'Outros',           value: 0,    color: '#3A3A45', percentage: 0  },
+]
+
+export const incomeMonthly: MonthlyData[] = [
+  { month: 'Dez', value: 400  },
+  { month: 'Jan', value: 750  },
+  { month: 'Fev', value: 900  },
+  { month: 'Mar', value: 1000 },
+  { month: 'Abr', value: 1100 },
+  { month: 'Mai', value: 1200 },
+]
+
+export const incomeCategoryColors: Record<string, { text: string; bg: string }> = {
+  'Bolsa de Estudos': { text: '#C9A86A', bg: 'rgba(201,168,106,0.15)' },
+  'Trabalho':         { text: '#D9BE87', bg: 'rgba(217,190,135,0.15)' },
+  'Ajuda dos pais':   { text: '#9090A0', bg: 'rgba(144,144,160,0.12)' },
+  'Outros':           { text: '#6B6B80', bg: 'rgba(107,107,128,0.10)' },
+}
+
 export const categoryColors: Record<string, { text: string; bg: string }> = {
   Delivery:    { text: '#E05C5C', bg: 'rgba(224,92,92,0.12)' },
   Transporte:  { text: '#5B8DEF', bg: 'rgba(91,141,239,0.12)' },

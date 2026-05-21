@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, Crown } from 'lucide-react'
 import SidebarNav from './SidebarNav'
-import DrakmaLogo from './DrakmaLogo'
+import UserProfile from './UserProfile'
 
 type SidebarProps = {
   expanded: boolean
@@ -17,20 +17,20 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
         className="flex items-center h-14 border-b px-4"
         style={{ borderColor: '#2A2A31', justifyContent: expanded ? 'space-between' : 'center' }}
       >
-        <div className="flex items-center gap-2">
-          <DrakmaLogo size={40} />
-          {expanded && (
-            <span className="text-sm font-bold tracking-wide" style={{ color: '#C9A86A', letterSpacing: '0.05em' }}>
+        {expanded && (
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm font-bold tracking-widest" style={{ color: '#C9A86A', letterSpacing: '0.1em' }}>
               DRAKMA
             </span>
-          )}
-        </div>
+            <span className="text-[10px]" style={{ color: '#6B6B80' }}>v1.0</span>
+          </div>
+        )}
 
         {expanded ? (
           <button
             onClick={onToggle}
-            className="w-6 h-6 rounded-md flex items-center justify-center transition-colors"
-            style={{ color: '#6B6B80' }}
+            className="absolute right-3 top-1/2 w-6 h-6 rounded-md flex items-center justify-center transition-colors"
+            style={{ color: '#6B6B80', transform: 'translateY(-50%)' }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2A2A31')}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
           >
@@ -39,8 +39,8 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
         ) : (
           <button
             onClick={onToggle}
-            className="absolute -right-3 top-4 w-6 h-6 rounded-full flex items-center justify-center border z-10"
-            style={{ backgroundColor: '#1B1B1F', borderColor: '#2A2A31', color: '#9090A0' }}
+            className="absolute -right-3 w-6 h-6 rounded-full flex items-center justify-center border z-10"
+            style={{ backgroundColor: '#1B1B1F', borderColor: '#2A2A31', color: '#9090A0', top: '50%', transform: 'translateY(-50%)' }}
           >
             <ChevronRight size={12} />
           </button>
@@ -78,24 +78,7 @@ export default function Sidebar({ expanded, onToggle }: SidebarProps) {
         </div>
       )}
 
-      {/* Profile */}
-      <div
-        className="flex items-center gap-3 px-4 py-3 border-t"
-        style={{ borderColor: '#2A2A31' }}
-      >
-        <div
-          className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
-          style={{ backgroundColor: '#C9A86A', color: '#1B1B1F' }}
-        >
-          A
-        </div>
-        {expanded && (
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-medium text-white truncate">Ana Lima</p>
-            <p className="text-[10px]" style={{ color: '#6B6B80' }}>Plano Free</p>
-          </div>
-        )}
-      </div>
+      <UserProfile expanded={expanded} />
     </div>
   )
 }

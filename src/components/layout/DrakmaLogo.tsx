@@ -2,35 +2,42 @@
 
 import { useState } from 'react'
 
-type DrakmaLogoProps = {
-  size?: number
-}
+export default function DrakmaLogo({ size = 56 }: { size?: number }) {
+  const [error, setError] = useState(false)
 
-export default function DrakmaLogo({ size = 40 }: DrakmaLogoProps) {
-  const [usePng, setUsePng] = useState(true)
-
-  if (usePng) {
+  if (!error) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/logo.png"
-        alt="Drakma"
-        width={size}
-        height={size}
-        style={{ borderRadius: 10, flexShrink: 0, objectFit: 'contain' }}
-        onError={() => setUsePng(false)}
-      />
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: 12,
+          overflow: 'hidden',
+          flexShrink: 0,
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo.png"
+          alt="Drakma"
+          onError={() => setError(true)}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
+      </div>
     )
   }
 
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ flexShrink: 0 }}
+      style={{ width: size, height: size, flexShrink: 0, display: 'block' }}
     >
       <circle cx="20" cy="20" r="20" fill="#1B1B1F" />
       <circle cx="20" cy="20" r="17" stroke="#C9A86A" strokeWidth="1.5" strokeDasharray="80 27" strokeLinecap="round" />
