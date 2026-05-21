@@ -2,8 +2,11 @@ import CategoryChart from './CategoryChart'
 import InsightBanner from './InsightBanner'
 import RecentExpenses from './RecentExpenses'
 import AIAssistant from '@/components/ai/AIAssistant'
+import type { Gasto } from '@/lib/supabase/queries'
 
-export default function BentoGrid() {
+type Props = { gastos: Gasto[] }
+
+export default function BentoGrid({ gastos }: Props) {
   return (
     <div
       className="flex-1"
@@ -15,22 +18,15 @@ export default function BentoGrid() {
         minHeight: 0,
       }}
     >
-      {/* Col 1 — spans 2 rows */}
       <div style={{ gridRow: 'span 2', minHeight: 0 }}>
-        <CategoryChart />
+        <CategoryChart gastos={gastos} />
       </div>
-
-      {/* Col 2-3 Row 1 — InsightBanner spans 2 cols */}
       <div style={{ gridColumn: 'span 2' }}>
         <InsightBanner />
       </div>
-
-      {/* Col 2 Row 2 */}
       <div style={{ minHeight: 0 }}>
-        <RecentExpenses />
+        <RecentExpenses gastos={gastos} />
       </div>
-
-      {/* Col 3 Row 2 */}
       <div style={{ minHeight: 0 }}>
         <AIAssistant />
       </div>
