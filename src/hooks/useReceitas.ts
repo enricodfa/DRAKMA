@@ -1,55 +1,49 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { usePeriod } from '@/store/period'
-import {
-  fetchReceitas, insertReceita, patchReceita, removeReceita,
-  type Receita, type ReceitaInput,
-} from '@/lib/supabase/queries'
+import { usePeriod, periodKey } from '@/store/period'
+import { fetchReceitas, insertReceita, patchReceita, removeReceita, type ReceitaInput } from '@/lib/supabase/queries'
 
 export function useReceitas() {
-  const { month, year } = usePeriod()
-  const [receitas, setReceitas] = useState<Receita[]>([])
-  const [loading, setLoading] = useState(true)
-  const [userId, setUserId] = useState<string | null>(null)
+  const {
+    month, year, userId, setUserId,
+    receitas, receitasLoading, loadedKey,
+    setReceitas, setReceitasLoading, addReceita, removeReceita: storeRemove,
+  } = usePeriod()
 
+  const key = periodKey(year, month)
+
+  // fetch userId once globally (shared with useGastos)
   useEffect(() => {
-    createClient().auth.getUser().then(({ data }) => {
-      setUserId(data.user?.id ?? null)
-    })
-  }, [])
+    if (userId) return
+    createClient().auth.getUser().then(({ data }) => setUserId(data.user?.id ?? null))
+  }, [userId, setUserId])
 
-  const load = useCallback(async () => {
-    if (!userId) return
-    setLoading(true)
-    try {
-      const data = await fetchReceitas(year, month)
-      setReceitas(data)
-    } finally {
-      setLoading(false)
-    }
-  }, [userId, month, year])
-
-  useEffect(() => { load() }, [load])
+  // fetch data only when period changes or not yet loaded
+  useEffect(() => {
+    if (!userId || loadedKey === key || receitasLoading) return
+    setReceitasLoading(true)
+    fetchReceitas(year, month).then(data => setReceitas(data, key)).catch(() => setReceitasLoading(false))
+  }, [userId, key, loadedKey, receitasLoading, year, month, setReceitas, setReceitasLoading])
 
   const add = useCallback(async (input: Omit<ReceitaInput, 'user_id'>) => {
     if (!userId) return
     const created = await insertReceita({ ...input, user_id: userId })
-    setReceitas(prev => [created, ...prev])
+    addReceita(created)
     return created
-  }, [userId])
+  }, [userId, addReceita])
 
   const update = useCallback(async (id: string, updates: Partial<ReceitaInput>) => {
     const updated = await patchReceita(id, updates)
-    setReceitas(prev => prev.map(r => r.id === id ? updated : r))
+    usePeriod.setState(s => ({ receitas: s.receitas.map(r => r.id === id ? updated : r) }))
     return updated
   }, [])
 
   const remove = useCallback(async (id: string) => {
     await removeReceita(id)
-    setReceitas(prev => prev.filter(r => r.id !== id))
-  }, [])
+    storeRemove(id)
+  }, [storeRemove])
 
-  return { receitas, loading, add, update, remove }
+  return { receitas, loading: receitasLoading, add, update, remove }
 }
